@@ -5,4 +5,7 @@ The yearly UmeBSD Meetup official page repo.
 added to archive - Marx theme.
 
 ## 2025
-In index - Fallout theme.
+added to archive - In index - Fallout theme
+
+## 2026
+In index - We want you theme.

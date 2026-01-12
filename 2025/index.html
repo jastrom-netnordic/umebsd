@@ -1,0 +1,327 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/png" href="./favicon.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+		<style type="text/css">
+			.blinking-cursor {
+				color: #2E3D48;
+				font-family: "VT323", monospace;
+				font-weight: 400;
+				font-size: clamp(18px, 3vw, 30px);
+				-webkit-animation: 1s blink step-end infinite;
+				-moz-animation: 1s blink step-end infinite;
+				-ms-animation: 1s blink step-end infinite;
+				-o-animation: 1s blink step-end infinite;
+				animation: 1s blink step-end infinite;
+			}
+
+			@keyframes "blink" {
+				from, to {
+					color: transparent;
+				}
+				50% {
+					color: #ffd52c;
+				}
+			}
+
+			@-moz-keyframes blink {
+				from, to {
+					color: transparent;
+				}
+				50% {
+					color: #ffd52c;
+				}
+			}
+
+			@-webkit-keyframes "blink" {
+				from, to {
+					color: transparent;
+				}
+				50% {
+					color: #ffd52c;
+				}
+			}
+
+			@-ms-keyframes "blink" {
+				from, to {
+					color: transparent;
+				}
+				50% {
+					color: #ffd52c;
+				}
+			}
+
+			@-o-keyframes "blink" {
+				from, to {
+					color: transparent;
+				}
+				50% {
+					color: #ffd52c;
+				}
+			}
+
+			.grid-container {
+				display: grid;
+			}
+
+			.item_a {
+				grid-column-start: 1;
+				grid-column-end: 3;
+			}
+
+			.item_b {
+				grid-column-start: 3;
+				grid-column-end: 3;
+			}
+
+			div.prompt_container {
+				width: 60vw;
+			}
+			div.prompt {
+				display: inline-block;
+				overflow: hidden;
+			}
+			div.input {
+				width: 0;
+				animation: typing 3s steps(30, end);
+				overflow: hidden;
+				display: inline-block;
+				white-space: nowrap;
+				animation-fill-mode: forwards;
+			}
+			@keyframes typing {
+				from {
+					width: 0%;
+				}
+				to {
+					width: 30vw;
+				}
+			}
+
+			div.output {
+				visibility: hidden;
+				animation-name: show;
+				animation-fill-mode: forwards;
+			}
+			@keyframes show {
+				from {
+					visibility: hidden;
+				}
+				to {
+					visibility: visible;
+				}
+			}
+
+			a {
+				color:  #ffd52c;
+			}
+
+		:root {
+		    font-family: "VT323", monospace;
+		    font-weight: 400;
+		    font-size: clamp(18px, 3vw, 30px);
+		    --primary-color: #ffd52c;
+		    --secondary-color: #ff5c00;
+		    --tertiary-color: #c72d04;
+		    --background-color: #111;
+		    scrollbar-color: var(--primary-color) var(--secondary-color);
+		}
+
+		table tr td{
+		    font-family: "VT323", monospace;
+		    font-weight: 400;
+		    padding-right: 1em;
+		    color: #ffd52c;
+		    scrollbar-color: var(--primary-color) var(--secondary-color);
+		    font-size: clamp(18px, 3vw, 30px);
+
+		}
+
+		* {
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		}
+
+		body {
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    height: 100vh;
+		    background-color: var(--background-color);
+		}
+		header,
+		footer {
+		    display: flex;
+		    gap: 2rem;
+		    align-items: center;
+		}
+
+		main {
+		    overflow: hidden;
+		}
+
+		section {
+		    height: 100%;
+		    overflow: hidden auto;
+		    margin: 1rem 0;
+		}
+
+		@keyframes crtAnimation {
+		    0% {
+			background-position: 0 0;
+		    }
+
+		    100% {
+			background-position: 0 10000%;
+		    }
+		}
+
+		.old-crt-monitor {
+		    box-shadow: inset 0px 0px 2rem;
+		    background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
+		    animation: crtAnimation 100s linear infinite;
+		    background-size: 100% 80%;
+		}
+
+		div.retro-container {
+		    width: 90vw;
+		    height: 90vh;
+		    display: grid;
+		    grid-template-rows: auto 1fr auto;
+		    overflow: hidden;
+		    padding: 0.5rem;
+		    border: 2px solid var(--primary-color);
+		    color: var(--primary-color);
+		    mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
+		    mask-size: 100% 2px;
+		    text-shadow: 0 0 0.5rem;
+		}
+		</style>
+	</head>
+	<body class="old-crt-monitor">
+		<audio id="musicplayer" autoplay loop>
+		  <source src="./hum.mp3" />
+		</audio>
+		<div class="retro-container grid-container">
+			<div class="item_a">
+				Last login: Fri Apr 4 18:00:00 2025 from 1.1.1.1 <br>
+				<br>
+
+				<div class="prompt_container">
+				<div class="prompt">hackerspace></div> <div class="input">drill UmeBSD.se</div>
+				</div><br>
+
+				<div class="output" style="animation-delay: 3s;">
+				;; ANSWER SECTION: <br>
+				Fabriksgatan 8B kv.&emsp;3600	IN	A	194.9.94.86 <br>
+				903 31 Umeå.&emsp;&emsp;&emsp;3600	IN	A	194.9.94.85
+				</div><br>
+
+				<br>
+				<div class="prompt_container">
+				<div class="prompt output" style="animation-delay: 4s;">hackerspace></div> <div class="input" style="animation-delay: 4.5s;">finger</div>
+				</div><br>
+				<div class="output" style="animation-delay: 5.5s;">
+					<table style="width=50vw">
+						<tr>
+							<td>Login</td>
+							<td>Name</td>
+							<td>TTY</td>
+							<td>Idle</td>
+							<td>Login</td>
+							<td>Time</td>
+						</tr>
+						<tr>
+							<td>Ove_</td>
+							<td>_</td>
+							<td>u0</td>
+							<td>0:0</td>
+							<td>Fri</td>
+							<td>18:00</td>
+						</tr>
+						<tr>
+							<td>jastrom</td>
+							<td>_</td>
+							<td>u1</td>
+							<td>0:0</td>
+							<td>Fri</td>
+							<td>18:00</td>
+						</tr>
+						<tr>
+							<td>IcePic</td>
+							<td>_</td>
+							<td>:0</td>
+							<td>0:0</td>
+							<td>Fri</td>
+							<td>18:00</td>
+						</tr>
+						<tr>
+							<td>sanderp</td>
+							<td>_</td>
+							<td>u2</td>
+							<td>0:0</td>
+							<td>Fri</td>
+							<td>42:69</td>
+						</tr>
+						<tr>
+							<td>nwe</td>
+							<td>_</td>
+							<td>u3</td>
+							<td>0:0</td>
+							<td>Fri</td>
+							<td>18:00</td>
+						</tr>
+						<tr>
+							<td>drobban</td>
+							<td>_</td>
+							<td>u4</td>
+							<td>0:0</td>
+							<td>Fri</td>
+							<td>18:00</td>
+						</tr>
+						<tr>
+							<td><a href="2024/index.html">daemon</a></td>
+							<td>_</td>
+							<td>_</td>
+							<td>177:0</td>
+							<td>240223</td>
+							<td>18:00</td>
+						</tr>
+					</table>
+				<br>
+				</div>
+				<div class="prompt_container">
+				<div class="prompt output" style="animation-delay: 6s">hackerspace></div> <div class="input" style="animation-delay: 6s;">shutdown -h 20250406<span class="blinking-cursor">&#9647;</span></div>
+				</div><br><br>
+
+
+			</div>
+			<div class="item_b">
+				<div style="display: flex; width: 100%; height: 10vh; place-content: center center;">
+					<h1> UmeBSD </h1>
+				</div>
+				<div style="display: flex; width: 100%; place-content: center center;">
+					<img src="./boy.png" style="height: 50vh;">
+				</div>
+				<div style="display: flex; width: 100%; height: 10vh; place-content: center center;">
+					<h4>
+					Join the vault 2025 - <a href="https://umebsd-2025.confetti.events" target="_blank">REGISTRATION IS OPEN!</a>
+					</h4>
+				</div>
+			</div>
+		</div>
+		<script>
+			const audio = document.getElementById("musicplayer");
+			document.addEventListener('click', onMouseUpdate, false);
+
+			function onMouseUpdate(e) {
+				/* Yea welcome to the 90's */
+				audio.play();
+			}
+		</script>
+	</body>
+</html>
